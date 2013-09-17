@@ -14,7 +14,7 @@ bower install
 
 ## Grunt commands
 
-Starting middleware server on localhost:9000
+Start middleware server on localhost:9000
 ```shell
 grunt server
 ```
