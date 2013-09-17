@@ -90,3 +90,4 @@ components/*
 sources/components/*
 
 .tmp
+build/*

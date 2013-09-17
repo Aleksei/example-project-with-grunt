@@ -11,8 +11,8 @@ module.exports = function ( grunt ) {
 
 	var sourcesPaths = {
 		development: 'sources',
-		http: 'client/public/web',
-		production: '../htdocs/client/public/web',
+		http: 'build',
+		production: 'build',
 		temp: '.tmp',
 		test: 'test'
 	};
