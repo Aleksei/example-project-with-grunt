@@ -1,0 +1,6 @@
+<svg id="square-apink" class="square_wrapper" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" preserveAspectRatio="none">
+	<polygon fill="#b50050" points="0,0 16,0 16,16 0,16" />
+	<polygon fill="#f20870" points="0,0 8,8 16,0" />
+	<polygon fill="#cd005b" points="16,0 8,8 16,16" />
+	<polygon fill="#a8004b" points="0,0 8,8 0,16" />
+</svg>

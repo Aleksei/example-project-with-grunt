@@ -1,0 +1,27 @@
+$usernav-item-height: 30px
+
+.usernav
+	position: relative
+
+.usernav_list
+	@extend %hmenu_list
+	text-align: right
+
+.usernav_item
+	@extend %hmenu_item
+
+	font-size: 12px
+	line-height: 1.375
+
+	padding: 0px 0px 0px 18px
+
+.usernav_link
+	@extend %hmenu_link-block
+	@extend .f-Archive
+
+	height: $usernav-item-height
+	line-height: $usernav-item-height
+
+	vertical-align: middle
+	text-align: center
+	color: $clrt-white

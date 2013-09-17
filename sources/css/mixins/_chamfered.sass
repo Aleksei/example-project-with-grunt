@@ -1,0 +1,30 @@
+=chamfered( $color: transparent, $size: 5px )
+	position: relative
+	margin-right: $size
+	background: $color
+
+	&:before, &:after
+		@extend %pseudo-block
+		position: absolute
+
+	&:before
+		top: 0px
+		right: -1*$size
+		+triangle( $color , $size, $size, 135 )
+
+	&:after
+		top: $size
+		bottom: 0px
+		right: -1*$size
+		width: $size
+
+		background: $color
+
+=chamfered-color( $color )
+	background-color: $color
+
+	&:before
+		border-left-color: $color
+
+	&:after
+		background: $color

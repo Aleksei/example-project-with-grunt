@@ -1,0 +1,98 @@
+$userpanel-height-inner: 40px
+$userpanel-avatar-size: $userpanel-height-inner
+$userpanel-padding: 10px
+
+.userpanel
+	height: $userpanel-height-inner
+	padding: $userpanel-padding 0px $userpanel-padding $content-padding-left
+	background: $clr-pink-c
+
+	position: relative
+
+.userpanel_user
+	float: left
+	clear: right
+	position: relative
+
+	padding: 0px $userpanel-padding 0px ( $userpanel-avatar-size + $userpanel-padding )
+
+	width: 160px
+
+	border-right: 3px solid $clr-pink-a
+
+.userpanel_avatar_link
+	@extend %reset-link
+	display: block
+
+	width: $userpanel-avatar-size
+	height: $userpanel-avatar-size
+
+	+absolute( 0px, auto, auto, 0px )
+	background: $clr-black
+
+	overflow: hidden
+	
+.userpanel_avatar
+	display: block
+	background: $clr-black
+
+	width: 100%
+
+.userpanel_data
+	height: 20px
+
+.userpanel_nick
+	@extend %link-inversed
+	@extend .f-Archive
+	@extend %shadow-text-simple
+
+	color: $clrt-white
+	font-size: 12px
+	text-transform: uppercase
+	vertical-align: top
+
+.userpanel_progress
+	@extend .progress
+	@extend %shadow-text-simple
+
+	background: $clr-pink-a
+
+	font-size: 12px
+	text-align: center
+	height: 20px
+	line-height: 20px
+
+	width: 100%
+
+.userpanel_score
+	float: left
+	clear: right
+
+	position: relative
+	height: $userpanel-height-inner
+	margin-left: 18px
+
+.userpanel_score_title
+	@extend .f-Archive
+	@extend %shadow-text-simple
+
+	font-size: 12px
+	text-transform: uppercase
+	vertical-align: top
+
+.userpanel_scrore_value
+	@extend .f-Archive
+	@extend %shadow-text-simple
+	font-size: 30px
+	vertical-align: baseline
+	line-height: 20px
+
+	+absolute( auto, auto, 0px, 0px )
+
+.userpanel_achievements
+	+absolute( $userpanel-padding, 40px, auto , auto )
+
+	height: $userpanel-height-inner
+	background: $clr-yellow
+	width: 140px
+	margin-right: 40px

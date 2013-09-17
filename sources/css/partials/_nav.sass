@@ -1,0 +1,54 @@
+$nav-items-length: 5
+
+$nav-items: games top badges achievements
+$nav-colors: $clr-blue-dark $clr-yellow $clr-coral $clr-pink-c
+
+$nav-item-height: $nav-height
+$nav-padding-top: $header-height - $nav-item-height
+
+.nav
+	position: relative
+	padding-top: $nav-padding-top
+
+.nav_list
+	@extend %hmenu_list
+
+.nav_item
+	@extend %hmenu_item
+
+	width: $content-width/$nav-items-length
+
+	font-size: 16px
+	line-height: 1.375
+
+.nav_link
+	@extend %hmenu_link-block
+	@extend .f-Archive
+
+	height: $nav-item-height
+	line-height: $nav-item-height
+
+	vertical-align: middle
+	text-align: center
+	color: $clrt-white
+
+@for $i from 1 through length( $nav-items )
+	$item: nth( $nav-items, $i )
+	$color: nth( $nav-colors, $i )
+
+	.nav_item-#{ $item }
+		&:hover, &:active, &.active
+			background: $color
+
+.nav_item-logo
+	.nav_link
+		+absolute( 15px, auto, auto, 50% )
+		margin-left: -1*image-width( 'logo.png' )/2
+
+		height: auto
+
+.nav_logo
+	+reset-image-anchor-border
+
+	display: block
+

@@ -1,0 +1,40 @@
+$column-margin: 10px
+
+$column-equal: ( $content-width - $column-margin ) / 2
+
+$column-1-main: 640px
+$column-1-aside: $content-width - $column-margin - $column-1-main
+
+$column-2-main: 460px
+$column-2-aside: $content-width - $column-margin - $column-2-main
+
+%columns
+	overflow: hidden
+
+%column
+	float: left
+	clear: right
+
+%column-left
+	@extend %column
+	margin-right: $column-margin
+
+%column-equal
+	@extend %column
+	width: $column-equal
+
+%column-1-main
+	@extend %column
+	width: $column-1-main
+
+%column-1-aside
+	@extend %column
+	width: $column-1-aside
+
+%column-2-main
+	@extend %column
+	width: $column-2-main
+
+%column-2-aside
+	@extend %column
+	width: $column-2-aside

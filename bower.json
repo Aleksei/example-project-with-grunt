@@ -1,0 +1,14 @@
+{
+  "name": "ipgames",
+  "version": "0.0.1",
+  "ignore": [
+    "node_modules",
+    "components",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "1",
+    "html5-boilerplate": "*",
+    "normalize-css": "~2.1.3"
+  }
+}

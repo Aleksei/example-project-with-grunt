@@ -1,0 +1,28 @@
+=background-sq( $color, $width: 80, $height: 80, $position: '0 0', $repeat: 'no-repeat', $resize: true, $noSpriting: false )
+	$image-path: 'squares/' + $width + 'x' + $height + '/' + $color + '.png'
+
+	@if $resize == true
+		width: 1px * $width
+		height: 1px * $height
+
+	@if $position != '0 0'
+		background-position: #{$position}
+
+	background-repeat: $repeat
+
+	.md-svg.md-backgroundsize &
+		background-image: inline-image( 'squares/svg/' + $color + '.svg' )
+		background-size: 1px * $width 1px * $height
+
+	.md-no-svg.md-no-retina &, .md-no-backgroundsize &
+		background-image: image-url( $image-path )
+
+	.md-no-svg.md-retina.md-backgroundsize &
+		background-image: image-url( 'squares/' + $width + 'x' + $height + '@2x/' + $color + '.png' )
+		background-size: 1px * $width 1px * $height
+
+%squareGray100x100
+	+background-sq( 'gray', $width: 100, $height: 100, $position: '50% 0%', $repeat: 'repeat', $resize: false, $noSpriting: true )
+
+%squareGrayInverted100x100
+	+background-sq( 'gray-inverted', $width: 100, $height: 100, $position: '50% 0%', $repeat: 'repeat', $resize: false, $noSpriting: true )

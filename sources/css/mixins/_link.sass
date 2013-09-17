@@ -1,0 +1,23 @@
+=link-colors( $colors... )
+	$length: length( $colors )
+
+	@if $length == 4
+		&:link
+			color: nth( $colors, 1 )
+		&:visited
+			color: nth( $colors, 2 )
+		&:hover
+			color: nth( $colors, 3 )
+		&:active
+			color: nth( $colors, 4 )
+
+	@else if $length == 2
+		&:link, &:visited
+			color: nth( $colors, 1 )
+
+		&:hover, &:active
+			color: nth( $colors, 2 )
+
+	@else
+		&:link, &:visited, &:hover, &:active
+			color: nth( $colors, 1 )

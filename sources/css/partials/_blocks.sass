@@ -1,0 +1,24 @@
+.blocks_wrapper
+	@extend %columns
+
+.blocks_wrapper-top
+	padding-top: $block-margin
+
+.block
+	padding-bottom: $block-margin
+
+.block-main
+	@extend %column-1-main
+	@extend %column-left
+
+	height: $block-main-height + $block-margin
+	margin-top: -1*$block-margin
+
+	position: relative
+
+	.usernav
+		+absolute( 0px, 0px, auto, auto )
+
+.block-aside
+	@extend %column-1-aside
+	@extend %block-main

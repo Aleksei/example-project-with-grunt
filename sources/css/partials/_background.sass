@@ -1,0 +1,98 @@
+.background_wrapper
+	+absolute( 0px, 0px, 0px )
+	height: 100%
+	width: 100%
+	overflow: hidden
+
+.background
+	width: 100%
+
+.background-squares
+	@extend %squareGray100x100
+	background-position: 50% 0px
+
+.background-squares-inverted
+	@extend %squareGrayInverted100x100
+	background-position: 50% 0px
+
+.background-lines
+	position: relative
+
+	$height: 390px
+
+	height: $height
+	width: 100%
+
+	+multiple-background-with-fallback( #ececec, image-url( 'patterns/line/main.png' ) 0% 0% repeat, image-url( 'patterns/line/shadow-darker.png' ) 13px -1*image-height('patterns/line/shadow-darker.png')/2 repeat-x, #ececec image-url( 'patterns/line/shadow-darker.png' ) -2px ( 392px - 1*image-height('patterns/line/shadow-darker.png')/2 ) repeat-x )
+
+	@extend %shadow-inset-horizontal
+
+.backgroud-lines_inner
+	@extend .wrapper-content
+
+.background_line
+	position: absolute
+	height: $square-size
+
+	&.background-top.background-left
+		@extend %shadow-bl
+
+	&.background-top.background-right
+		@extend %shadow-br
+
+	&.background-bottom.background-left
+		@extend %shadow-tl
+
+	&.background-bottom.background-right
+		@extend %shadow-tr
+
+.background_wrapper-left
+	+absolute( 0px, 50%, 0px, 0px )
+
+.background_wrapper-right
+	+absolute( 0px, 0px, 0px, 50% )
+
+.background-top
+	top: 0px
+
+.background-bottom
+	bottom: 0px
+
+.background-left
+	right: 550px
+	left: 0px
+
+	&.background-squares, &.background-squares-inverted
+		background-position: 100% 0%
+
+.background-right
+	left: 550px
+	right: 0px
+
+	&.background-squares, &.background-squares-inverted
+		background-position: 0% 0%
+
+.background_square
+	@extend .background-squares
+	position: absolute
+
+	width: $square-size
+	height: $square-size
+
+	@extend %shadow-br
+
+.background_square-first
+	bottom: 100px
+	right: 370px
+
+.background_square-second
+	bottom: 20px
+	right: 480px
+
+.background_square-third
+	top: 80px
+	left: 330px
+
+.background_square-fourth
+	bottom: 30px
+	left: 390px

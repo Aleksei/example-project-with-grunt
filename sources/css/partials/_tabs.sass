@@ -1,0 +1,57 @@
+$tab-label-height: 30px
+
+.tab_labels
+	@extend %hmenu_list
+
+.tab_label
+	@extend %hmenu_item
+	+inline-block()
+
+	&:first-child
+		.tab_link
+			padding-left: $content-padding-left
+			text-align: left
+
+%tab_link-pink
+	+link-colors( #fff )
+	+chamfered( $clr-pink-c, 10px )
+	background: $clr-pink-c
+
+	&:hover, &:active
+		+chamfered-color( $clr-pink-d )
+
+%tab_link-black
+	+link-colors( #fff )
+	+chamfered( $clr-black, 10px )
+
+	&:hover, &:active
+		+chamfered-color( $clr-black )
+
+.tab_link
+	@extend %reset-link
+	@extend %shadow-text-simple
+
+	@extend .f-Archive
+
+	display: block
+	height: $tab-label-height
+
+	font-size: 12px
+	line-height: $tab-label-height
+	text-align: center
+	text-transform: uppercase
+
+.tab_label-active
+	.tab_link
+		cursor: default
+
+.tabs-game
+	.tab_label
+		width: 120px
+
+	.tab_link
+		@extend %tab_link-pink
+
+	.tab_label-active
+		.tab_link
+			@extend %tab_link-black

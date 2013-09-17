@@ -1,0 +1,25 @@
+$font-default: Arial, sans-serif;
+
+
+@font-face {
+	font-family: 'archiveregular';
+	src: url('../font/archive-webfont.eot');
+	src: url('../font/archive-webfont.eot?#iefix') format('embedded-opentype'),
+	url('../font/archive-webfont.woff') format('woff'),
+	url('../font/archive-webfont.ttf') format('truetype'),
+	url('../font/archive-webfont.svg#archiveregular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+%f-Archive {
+	font-family: 'archiveregular', sans-serif;
+}
+
+.f-Default {
+	font-family: $font-default;
+}
+
+.f-Archive {
+	@extend %f-Archive;
+}

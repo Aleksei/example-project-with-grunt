@@ -1,0 +1,66 @@
+$footnav-main-height: 280px
+$footnav-main-width: 210px
+$footnav-main-padding-lr: 20px
+$footnav-list-padding-tb: 16px
+$footnav-main-margin-right: 40px
+$footnav-length: 5
+$footnav-other-width: ( $content-width - $footnav-main-width - $footnav-main-margin-right ) / ( $footnav-length - 1 )
+
+.footnav
+	@extend .wrapper-content
+	@extend %hmenu_list
+
+	padding: 20px 0px 0px
+
+.footnav_list
+	@extend %reset-list
+	@extend %hmenu_item
+
+	font-size: 14px
+
+	padding: $footnav-list-padding-tb 0px
+
+.footnav_list-ios-and-language,
+.footnav_list-community,
+.footnav_list-about,
+.footnav_list-features
+	width: $footnav-other-width
+
+.footnav_title
+	@extend .f-Archive
+
+	font-size: 16px
+	line-height: 22px
+
+	padding: 0px 0px 10px
+
+.footnav_title-second
+	padding-top: 90px
+
+.footnav_item
+	padding: 0px
+	margin: 0px
+	padding: 2px 0px
+
+.footnav_link
+	@extend %link-inversed
+	+link-colors( #fff )
+
+	font-size: 14px
+	line-height: 1.2
+
+.footnav_list-main
+	height: $footnav-main-height - 2*$footnav-list-padding-tb
+	width: $footnav-main-width - 2*$footnav-main-padding-lr
+
+	margin: 0px $footnav-main-margin-right 0px 0px
+	padding-left: $footnav-main-padding-lr
+	padding-right: $footnav-main-padding-lr
+	background: $clr-gray
+
+	.footnav_link
+		@extend .f-Archive
+
+.footnav_item-main
+	.footnav_link
+		+link-colors( $clrt-yellow )

@@ -1,0 +1,45 @@
+$mtitle-height: 30px
+$mtitle-padding-left: $content-padding-left
+
+.mtitles
+	@extend %reset-list
+	overflow: hidden
+
+.mtitle
+	float: left
+	clear: right
+	width: 50%
+	z-index: $z-index-content
+
+.mtitle_link
+	@extend %reset-link
+	display: block
+	position: relative
+
+.mtitle-0
+	background-color: $clr-pink-f
+
+.mtitle-1
+	background-color: $clr-pink-c
+
+.mtitle-2
+	background-color: $clr-pink-b
+
+.mtitle-3
+	background-color: $clr-pink-a
+
+.mtitle_progress
+	@extend .progress_bar
+
+.mtitle_text
+	@extend %shadow-text-simple
+
+	position: relative
+	z-index: $z-index-content + 1
+
+	height: $mtitle-height
+	padding: 0px 0px 0px $mtitle-padding-left
+
+	color: $clrt-white
+	font-size: 13px
+	line-height: $mtitle-height

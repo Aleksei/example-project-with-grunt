@@ -1,0 +1,274 @@
+$break-medium: 1180px
+$break-large: 1400px
+
+=respond-to-screen($media)
+	@if $media == medium-and-smaller
+		@media only screen and (max-width: $break-medium)
+			@content
+	@else if $media == medium
+		@media only screen and (min-width: $break-medium + 1) and (max-width: $break-large)
+			@content
+	@else if $media == medium-and-bigger
+		@media only screen and (min-width: $break-large + 1)
+			@content
+	@else if $media == large-and-smaller
+		@media only screen and (max-width: $break-large)
+			@content
+	@else if $media == large
+		@media only screen and (min-width: $break-large + 1)
+			@content
+	@else if $media == large-and-bigger
+		@media only screen and (min-width: $break-large + 1)
+			@content
+
+=respond-to($media)
+	@if $media == phone
+		@media only screen and (max-width: $break-phone)
+			@content
+	@else if $media == tablet
+		@media only screen and (min-width: $break-phone + 1) and (max-width: $break-tablet - 1)
+			@content
+	@else if $media == desktop
+		@media only screen and (min-width: $break-tablet)
+			@content
+
+$default-font-size: 16px
+
+=hidpi( $media: all )
+	@media only #{$media} and (min--moz-device-pixel-ratio: 1.5), only #{$media} and (-o-min-device-pixel-ratio: 3/2), only #{$media} and (-webkit-min-device-pixel-ratio: 1.5), only #{$media} and (min-device-pixel-ratio: 1.5), only #{$media} and (min-resolution: 144dpi), only #{$media} and (min-resolution: 1.5dppx)
+		@content
+
+=retina( $media: all )
+	@include hidpi( $media )
+		@content
+
+// Portrait and Landscape orinetation
+=respond-to-portrait
+	@media screen and ( orientation:portrait )
+		@content
+
+=respond-to-landscape
+	@media screen and ( orientation:landscape )
+		@content
+
+// rem: Calculate the rem unit, and return both pixels and rems to support older (non-rem supporting) browsers
+@mixin rem($property, $value, $context: $default-font-size)
+	#{$property}: $value
+	#{$property}: cr($value, $context)
+
+// Functions
+
+// calc-rem: calculate the rem value based on the desired pixel
+// value versus a context value, usually the default font size
+$default-font-size: 16px !default
+
+@function calc-rem( $target, $context: $default-font-size )
+	@return $target / $context * 1rem
+
+// Shorthand redeclaration of the above
+@function cr( $target, $context: $default-font-size )
+	@return calc-rem( $target, $context )
+
+// calc-percent: calculate the percent using the target ÷ context
+// formula, expressed as a percentage.  See Chapter 2 of "Responsive
+// Web Design" (Marcotte, A Book Apart, 2011)
+@function calc-percent( $target, $context )
+	@return $target / $context * 100%
+
+// Shorthand redeclaration of the above
+@function cp( $target, $context )
+	@return calc-percent( $target, $context )
+
+// hidpi-sprite-adjustment
+// See http://blog.teamtreehouse.com/?p=20925
+@function hidpi-sprite-adjustment( $sprite-map, $sprite )
+	@return round(nth(sprite-position( $sprite-map, $sprite ), 2) / 2)
+
+@function retina-sprite-position( $sprite-map, $sprite )
+	@return hidpi-sprite-adjustment( $sprite-map, $sprite )
+
+=background-single-rr( $image-name, $resized: false )
+	$image-file: $image-name + '.png'
+	$image-file-retina: $image-name + '@2x.png'
+
+	$width: image-width( $image-file )
+	$height: image-height( $image-file )
+
+	@if $resized
+		width: $width
+		height: $height
+
+	background-image: image-url($image-file)
+
+	.md-retina &
+		background-image: image-url($image-file-retina)
+
+
+=background-sprite-rr( $image-name, $sprite-map, $sprite-map-retina )
+	$image-file: sprite-file( $sprite-map, $image-name )
+
+	$width: image-width( $image-file )
+	$height: image-height( $image-file )
+
+	width: $width
+	height: $height
+
+	background: sprite( $sprite-map, $image-name ) no-repeat
+
+	.md-retina &
+		background-image: sprite-url( $sprite-map-retina )
+		background-position: 0 retina-sprite-position( $sprite-map-retina, $image-name)
+
+		// $sprite-width: image-width( sprite-path( $sprite-map ) )
+		$sprite-width-retina: image-width( sprite-path( $sprite-map-retina ) )
+		background-size: $sprite-width-retina/2 auto
+
+=absolute( $top: auto, $right: auto, $bottom: auto, $left: auto )
+	position: absolute
+	top: $top
+	left: $left
+	right: $right
+	bottom: $bottom
+	
+=horizontalList_item
+	float: left
+	clear: right
+
+=no-svg
+	.md-no-svg &
+		@content
+
+
+
+=linkWithSpan
+	text-decoration: none !important
+
+	.link_text
+		text-decoration: underline
+
+	&:hover, &:active
+		.link_text
+			text-decoration: none
+
+.md-opacity
+	%shadow-sq
+		&:after
+			content: " "
+			background: #000
+			+opacity(0.2)
+			+absolute( 100%, 20px, auto, 20px )
+			height: 20px
+			z-index: -1
+
+.md-rgba
+	%shadow-first
+		+single-box-shadow( rgba( 0, 0, 0, 0.4 ), 10px, 18px, 14px, 0px )
+
+	%shadow-first-dark
+		+single-box-shadow( rgba( 0, 0, 0, 0.6 ), 10px, 18px, 14px, 0px )
+
+	%shadow-red
+		+single-box-shadow( rgba( 255, 156, 156, 0.6 ), 10px, 18px, 14px, 0px )
+
+	%shadow-red-dark
+		+single-box-shadow( rgba( 255, 156, 156, 0.8 ), 10px, 18px, 14px, 0px )
+
+.md-no-rgba
+	%shadow-first
+		+single-box-shadow( #999, 10px, 18px, 14px, 0px )
+
+	%shadow-first-dark
+		+single-box-shadow( #bbb, 10px, 18px, 14px, 0px )
+
+	%shadow-red
+		+single-box-shadow( #c77, 10px, 18px, 14px, 0px )
+
+	%shadow-red-dark
+		+single-box-shadow( #d88, 10px, 18px, 14px, 0px )
+
+=simple-transition( $properties, $time: 0.3s, $easing: ease-out, $delay: 0s )
+	+transition-property( $properties )
+	+transition-duration( $time )
+	+transition-timing-function( $easing )
+	+transition-delay( $delay )
+
+=text-transition( $time: 0.5s )
+	+simple-transition( font-size, $time, ease-out )
+
+=shadow-transition( $time: 0.5s )
+	+simple-transition( box-shadow, $time, ease-out )
+
+%text-glow-simple
+	+simple-transition( "text-shadow, color" )
+
+	&:hover, &:active, &:focus, &.active
+		+text-shadow(-1px 1px 8px #ccf, 1px -1px 8px #fff)
+
+%after-block
+	content: ' '
+	display: block
+
+%standartLink
+	&:link, &:visited
+		text-decoration: underline
+	&:hover, &:active
+		text-decoration: none
+
+%inversedLink
+	&:link, &:visited
+		text-decoration: none
+	&:hover, &:active
+		text-decoration: underline
+
+%gradient-indee
+	+background( linear-gradient(left, $clr-violet, $clr-blue) )
+
+.gradient-indee
+	@extend %gradient-indee
+
+%gradient-indee-looped
+	+background( linear-gradient(left, $clr-violet, $clr-blue, $clr-violet) )
+
+%gradient-indee-inverted
+	+background( linear-gradient(left, $clr-blue, $clr-violet) )
+
+%gradient-indee-inverted-loop
+	+background( linear-gradient(left, $clr-blue, $clr-violet, $clr-blue) )
+
+%gradient-indee-2
+	+background( linear-gradient(left, $clr-violet, $clr-azure) )
+
+%gradient-indee-2-loop
+	+background( linear-gradient(left, $clr-violet, $clr-azure, $clr-violet) )
+
+.blueText
+	@extend .f-AdiHausCyrMd !optional
+	text-transform: uppercase
+	font-size: 14px
+	line-height: 120%
+
+=background-image-size( $image-file )
+	height: image-height( $image-file )
+	width: image-width( $image-file )
+
+=background-image-single( $image-file, $position: '0 0', $repeat: 'no-repeat' )
+	+background-image-size( $image-file )
+
+	background: image-url( $image-file ) #{$position} #{$repeat}
+
+=background-image-sprite( $sprite, $image, $onlyPosition: false )
+	$image-file: sprite-file( $sprite, $image )
+
+	+background-image-size( $image-file )
+
+	@if $onlyPosition
+		background-position: sprite-position( $sprite, $image )
+	@else
+		background: sprite( $sprite, $image )
+
+=multiple-background-with-fallback( $color, $backgrounds... )
+	.md-multiplebgs &
+		background: $backgrounds
+
+	.md-no-multiplebgs &
+		background: $color nth( $backgrounds, 1 )

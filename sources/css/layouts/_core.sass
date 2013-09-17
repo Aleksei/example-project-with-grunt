@@ -1,0 +1,71 @@
+html
+	height: 100%
+	width: 100%
+
+	background: #000
+
+	-webkit-font-smoothing: antialiased
+
+body
+	position: relative
+
+	width: 100%
+
+	min-height: 100%
+	min-width: $page-width
+
+	font-family: $font-default
+	font-size: 0.675em
+	line-height: 130%
+	color: $clrt-white
+
+	@extend %squareGrayInverted100x100
+	background-color: #000
+	background-position: 50% -10px
+
+header
+	background: #000
+
+	position: relative
+	z-index: 100
+	height: $header-height
+
+	.header_inner
+		@extend .wrapper-inner
+
+footer
+	+absolute(auto, 0px, 0px, 0px)
+
+	background: #000
+	height: $footer-height
+
+.footer_information
+	@extend %squareGrayInverted100x100
+	background-position: 50% 0px
+	height: 2*$square-size
+
+.footer_inner
+	@extend .wrapper-inner
+
+	position: relative
+
+	top: 40px
+	padding: 70px 0px 0px
+
+	.copyright
+		+absolute( 0px, auto, auto, 230px )
+
+.footer_title
+	+absolute( 0px, auto, auto, 0px )
+
+	@extend .f-Archive
+	@extend %shadow-text
+	font-size: 24px
+	line-height: 24px
+	vertical-align: baseline
+
+.footer_socials
+	+absolute( 0px, 0px, auto, auto )
+
+.footer_text
+	font-size: 12px

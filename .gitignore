@@ -1,0 +1,92 @@
+syntax: glob
+
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+*.swp
+*.swo
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+log
+
+# Developer generated files #
+######################
+*.iml
+.rvmrc
+core/cache/*
+dist
+
+# IDE generated files #
+######################
+*.iml
+.idea
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+*~
+
+
+# NODEJS ignore files #
+######################
+lib-cov
+*.seed
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+
+pids
+results
+
+npm-debug.log
+node_modules
+
+# Compass/SASS ignore files #
+######################
+.sass-cache
+
+# Ruby #
+#######################
+Gemfile.lock
+
+# Project folders #
+#######################
+logs/*
+tmp/*
+session/*
+
+components/*
+sources/components/*
+
+.tmp
